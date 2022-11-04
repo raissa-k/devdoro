@@ -1,0 +1,39 @@
+.container {
+	height: 100vh;
+	max-width: 992px;
+	margin: 0 auto;
+	padding: 2.5rem 2rem;
+	display: flex;
+	flex-direction: column;
+  }
+  
+  .container section {
+	flex: 1;
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: 6.25rem;
+	align-content: center;
+  }
+  
+  @media (max-width: 768px) {
+	.container {
+	  max-width: 480px;
+	}
+  
+	.container section {
+	  display: flex;
+	  flex-direction: column;
+	  gap: 3.8rem;
+	  justify-content: center;
+	}
+  
+	.container section > div:last-child {
+	  margin-bottom: 1.8rem;
+	}
+  }
+  
+  @media (min-height: 920px) {
+	.container section {
+	  gap: 5.4rem;
+	}
+  }
