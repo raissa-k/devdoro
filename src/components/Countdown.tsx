@@ -1,17 +1,39 @@
+import { useState } from 'react'
 import styles from '../styles/components/Countdown.module.css'
 
 export function Countdown() {
+	const [time, setTime] = useState(25 * 60)
+	const [active, setActive] = useState(false)
+
+	const minutes = Math.floor(time / 60)
+	const seconds = time % 60
+
+	const [minuteLeft, minuteRight] = String(minutes).padStart(2, '0').split('')
+	const [secondLeft, secondRight] = String(seconds).padStart(2, '0').split('')
+
+	function startCountdown() {
+		setActive(true)
+	}
+
 	return (
-		<div className={styles.countdownContainer}>
-			<div>
-				<span>2</span>
-				<span>5</span>
+		<div>
+			<div className={styles.countdownContainer}>
+				<div>
+					<span>{minuteLeft}</span>
+					<span>{minuteRight}</span>
+				</div>
+				<span>:</span>
+				<div>
+					<span>{secondLeft}</span>
+					<span>{secondRight}</span>
+				</div>
 			</div>
-			<span>:</span>
-			<div>
-				<span>0</span>
-				<span>0</span>
-			</div>
+			<button 
+				type='button' 
+				className={styles.countdownButton}
+				onClick={startCountdown}>
+					Start cycle
+			</button>
 		</div>
 	)
 }
