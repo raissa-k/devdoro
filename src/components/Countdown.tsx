@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import styles from '../styles/components/Countdown.module.css'
 
 export function Countdown() {
@@ -14,6 +14,14 @@ export function Countdown() {
 	function startCountdown() {
 		setActive(true)
 	}
+
+	useEffect(() => {
+		if (active && time > 0) {
+			setTimeout(() => {
+				setTime(time - 1)
+			}, 1000);
+		}
+	}, [active, time])
 
 	return (
 		<div>
