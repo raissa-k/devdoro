@@ -41,6 +41,36 @@ a {
   text-decoration: none;
 }
 
+*:focus, button:focus { 
+	outline: 0.1em var(--red) solid;
+	outline-offset: 0.1rem;
+}
+
+*:focus:not(:focus-visible), button:focus:not(:focus-visible) {
+	outline: 0;
+	outline-offset: 0.25rem;
+}
+
+*:focus-visible, button:focus-visible { 
+	outline: 0.25em var(--red) dashed;
+	outline-offset: 0.25rem;
+}
+
+.skip-link {
+	position: absolute;
+	top: 0;
+	right: 100%;
+	z-index: 500;
+  }
+
+.skip-link:focus {
+	right: auto;
+	background-color: var(--title);
+	color: var(--background);
+	border: var(--background) 3px solid;
+	padding: 1em;
+}
+
 @media (max-width: 1000px) {
   html {
     font-size: 93.75%;
