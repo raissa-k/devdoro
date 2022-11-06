@@ -49,6 +49,11 @@
 	padding: 0 2rem 1.5rem;
 	border-bottom: 1px solid var(--gray-line);
   }
+
+  .challengeActive img {
+	margin-top: 1rem;
+	height: 6rem;
+  }
   
   .challengeActive main {
 	flex: 1;
@@ -85,6 +90,7 @@
 	font-size: 1rem;
 	font-weight: 600;
 	transition: filter .2s;
+	margin-top: 1.5rem;
   }
   
   .challengeActive footer button:hover {
