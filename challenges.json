@@ -1,0 +1,102 @@
+[
+	{
+	  "type": "body",
+	  "description": "With your hand open and facing down, gently bend wrist from side to side, as far as possible. Hold for 3 to 5 seconds. Repeat 3 times.",
+	  "amount": 80
+	},
+	{
+	  "type": "body",
+	  "description": "Start by stretching your arm and hand out and slowly rotate the wrist down until you feel a stretch. Hold for 3 to 5 seconds. Next, rotate the palm up until you feel a stretch. Repeat 3 times.",
+	  "amount": 60
+	},
+	{
+	  "type": "body",
+	  "description": "Grasp your hand and hold your fingers with the other hand, then bend your wrist down until you feel a stretch. Hold for 3 to 5 seconds. Repeat 3 times. Then slowly bend your wrist up until you feel the stretch. Hold and relax.",
+	  "amount": 70
+	},
+	{
+	  "type": "body",
+	  "description": "Sitting with your elbows on the table and palms together, slowly lower wrists to the table until you feel a stretch. Be sure to keep your palms together throughout the stretch. Hold 5 to 7 seconds. Repeat 3 times.",
+	  "amount": 60
+	},
+	{
+	  "type": "body",
+	  "description": "Sit or stand upright. Without lifting your chin, glide your head straight back. Hold for 20 counts and repeat 5 to 10 times.",
+	  "amount": 60
+	},
+	{
+	  "type": "body",
+	  "description": "Slowly try to touch your left ear to your left shoulder. Repeat on the right side. Slowly drop your chin to your chest, turn your head all the way to the left, then to the right.",
+	  "amount": 50
+	},
+	{
+	  "type": "body",
+	  "description": "Slowly roll your shoulders backward five times in a circular motion. Next, roll your shoulders forwards.",
+	  "amount": 50
+	},
+	{
+	  "type": "body",
+	  "description": "Place your hands behind your head, and squeeze your shoulder blades together.",
+	  "amount": 50
+	},
+	{
+	  "type": "body",
+	  "description": "Raise the top of your shoulders towards your ears until you feel slight tension in your neck and shoulders. Hold this feeling of tension for 3 to 5 seconds. Then relax your shoulders downward. Do this 2 or 3 times.",
+	  "amount": 100
+	},
+	{
+	  "type": "body",
+	  "description": "Interlace your fingers and lift your arms over your head, keeping the elbows straight. Press arms as far back as you can. To stretch your sides, slowly lean to the left and then to the right.",
+	  "amount": 80
+	},
+	{
+	  "type": "body",
+	  "description": "Hold your right arm with your left hand just above the elbow. Gently push your elbow toward your left shoulder. Hold stretch for 5 seconds. Repeat with your left arm.",
+	  "amount": 50
+	},
+	{
+	  "type": "body",
+	  "description": "Hold one foot off the floor with your leg straight. Alternately flex your ankle (point your toes up) and extend (point your toes down). Repeat with the other leg.",
+	  "amount": 80
+	},
+	{
+	  "type": "body",
+	  "description": "Sit forward on the chair so that your back is not touching the chair's back. Place feet flat on the floor. With a straight leg, lift one foot a few inches off the floor. Repeat with the other leg.",
+	  "amount": 100
+	},
+	{
+	  "type": "body",
+	  "description": "Sit with one leg across the other. Place your arm or elbow on the outside of the crossed leg. Gently apply pressure, while looking the opposite way. Repeat with the other leg.",
+	  "amount": 80
+	},
+	{
+	  "type": "eye",
+	  "description": "First, rub your palms together to create a bit of heat. Next, form your hands into cup shapes. Now, take your hands and press them over your (closed) eyes.",
+	  "amount": 90
+	},
+	{
+	  "type": "eye",
+	  "description": "Focus on your thumb at an arm’s length away from the tip of your nose. Slowly move the thumb toward your nose until you can no longer focus clearly on it.",
+	  "amount": 90
+	},
+	{
+	  "type": "eye",
+	  "description": "Simply close your eyelids and roll your eyes around in circular motions.",
+	  "amount": 100
+	},
+	{
+	  "type": "eye",
+	  "description": "Focus on an area on the floor around 8 feet away. Move the eyes in the shape of a figure 8. Trace the imaginary figure 8 for 30 seconds, then switch direction.",
+	  "amount": 100
+	},
+	{
+	  "type": "eye",
+	  "description": "Observe something which is afar from you. Find something at the opposite end of the room and scan its outline. Move from one object to another.",
+	  "amount": 70
+	},
+	{
+	  "type": "eye",
+	  "description": "Keep your eyes closed as you glance up as far as comfortably possible, then look down. Repeat a few times and then open your eyes and look around. Next, close your eyes again. Keeping your eyes closed, look to the right and the left. Repeat this a few times.",
+	  "amount": 90
+	}
+  ]
