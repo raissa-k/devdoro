@@ -59,14 +59,14 @@ export function Countdown() {
 				<>
 				{ isActive ? (
 					<button 
-					type='button' 
+					type='button'
 					className={`${styles.countdownButton} ${styles.countdownButtonActive}`}
 					onClick={resetCountdown}>
 						Reset cycle
 				</button>
 				) : (
 					<button 
-					type='button' 
+					type='button'
 					className={styles.countdownButton}
 					onClick={startCountdown}>
 						Start cycle
