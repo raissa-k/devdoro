@@ -12,7 +12,7 @@
 	display: grid;
 	grid-template-columns: 1fr 1fr;
 	gap: 6.25rem;
-	align-content: center;
+	align-content: flex-start;
   }
   
   @media (max-width: 768px) {
