@@ -1,6 +1,5 @@
 import Head from 'next/head'
 
-import { ChallengesProvider } from '../contexts/ChallengeContext'
 import '../styles/styles.css'
 
 function MyApp({ Component, pageProps }) {
@@ -12,9 +11,7 @@ function MyApp({ Component, pageProps }) {
 	</Head>
 	
 	<main id="main">
-		<ChallengesProvider>
         <Component {...pageProps} />
-		</ChallengesProvider>
 	</main>
 	</>
 	)
