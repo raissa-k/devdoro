@@ -1,57 +1,31 @@
-import { GetServerSideProps } from 'next'
-
+import { useEffect } from 'react';
 import { ChallengeBox } from '../components/ChallengeBox'
-import { CompletedChallenges } from '../components/CompletedChallenges'
 import { Countdown } from '../components/Countdown'
-import { ExperienceBar } from '../components/ExperienceBar'
-import { Profile } from '../components/Profile'
-import { ChallengesProvider } from '../contexts/ChallengeContext'
 import { CountdownProvider } from '../contexts/CountdownContext'
-import styles from '../styles/pages/Home.module.css'
+import { themeChange } from 'theme-change';
+import ThemeChanger from '../components/ThemeChanger';
 
-interface HomeProps{
-	level: number
-	currentExperience: number
-	challengesCompleted: number
-}
+/*Initialize under useEffect */
 
-export default function Home(props: HomeProps) {
+
+export default function Home(){
+	useEffect(() => {
+		themeChange(false);
+	  }, []);
 	return (
-		<ChallengesProvider
-			level={props.level}
-			currentExperience={props.currentExperience}
-			challengesCompleted={props.challengesCompleted}>
-				
-    	<div className={styles.container}>
-			
+    	<div className="h-screen py-6 px-12 my-0 mx-auto flex flex-col flex-1 max-w-sm md:max-w-4xl">
 			<CountdownProvider>
-			<section>
-				<div>
-					<Profile />
-					<CompletedChallenges />
-					<Countdown />
+			<section className="flex flex-col flex-1 md:grid grid-cols-2 gap-8 content-start">
+				<div className="">
+				<Countdown />
 				</div>
 
 				<div>
-				<ExperienceBar />
 				<ChallengeBox />
 				</div>
 			</section>
 			</CountdownProvider>
+			<ThemeChanger />
 		</div>
-		</ChallengesProvider>
   )
-}
-
-export const getServerSideProps: GetServerSideProps = async (ctx) => {
-
-	const { level, currentExperience, challengesCompleted } = ctx.req.cookies
-
-	return {
-		props: {
-			level: Number(level),
-			currentExperience: Number(currentExperience),
-			challengesCompleted: Number(challengesCompleted)
-		}
-	}
 }
