@@ -1,13 +1,22 @@
-import { createContext, ReactNode, useContext, useEffect, useState } from "react";
-import { ChallengesContext } from "./ChallengeContext";
+import { createContext, ReactNode, useEffect, useState } from "react";
+import challenges from '../../challenges.json'
+
+interface Challenge {
+	type: 'body' | 'eye';
+	description: string;
+}
 
 interface CountdownContextData {
 	minutes: number
 	seconds: number
 	isFinished: boolean
 	isActive: boolean
+	activeChallenge: Challenge;
 	startCountdown: () => void
 	resetCountdown: () => void
+	resetChallenge: () => void
+	completeChallenge: () => void
+	startNewChallenge: () => void
 }
 
 interface CountdownProviderProps {
@@ -19,10 +28,10 @@ export const CountdownContext = createContext({} as CountdownContextData)
 let countdownTimeout: NodeJS.Timeout
 
 export function CountdownProvider({ children }: CountdownProviderProps){
-	const {startNewChallenge} = useContext(ChallengesContext)
 	const [time, setTime] = useState(25 * 60)
 	const [isActive, setIsActive] = useState(false)
 	const [isFinished, setIsFinished] = useState(false)
+	const [activeChallenge, setActiveChallenge] = useState(null)
 
 	const minutes = Math.floor(time / 60)
 	const seconds = time % 60
@@ -38,6 +47,23 @@ export function CountdownProvider({ children }: CountdownProviderProps){
 		setTime(25 * 60)
 	}
 
+	function resetChallenge(){
+		setActiveChallenge(null)
+	}
+
+	function completeChallenge(){
+		if (!activeChallenge) return
+		setActiveChallenge(null)
+	}
+
+	function startNewChallenge(){
+		let randomChallengeIndex = Math.floor(Math.random() * challenges.length)
+		const challenge = challenges[randomChallengeIndex]
+		setActiveChallenge(challenge)
+
+		new Audio('/notification.mp3').play()
+	}
+
 	useEffect(() => {
 		if (isActive && time > 0) {
 			countdownTimeout = setTimeout(() => {
@@ -48,6 +74,7 @@ export function CountdownProvider({ children }: CountdownProviderProps){
 			setIsActive(false)
 			startNewChallenge()
 		}
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [isActive, time])
 
 
@@ -57,8 +84,12 @@ export function CountdownProvider({ children }: CountdownProviderProps){
 			seconds,
 			isFinished,
 			isActive,
+			activeChallenge,
 			startCountdown,
-			resetCountdown
+			resetCountdown,
+			resetChallenge,
+			completeChallenge,
+			startNewChallenge
 		}}>
 			{children}
 		</CountdownContext.Provider>

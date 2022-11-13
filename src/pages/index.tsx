@@ -1,57 +1,37 @@
-import { GetServerSideProps } from 'next'
-
+import { useEffect } from 'react';
 import { ChallengeBox } from '../components/ChallengeBox'
-import { CompletedChallenges } from '../components/CompletedChallenges'
 import { Countdown } from '../components/Countdown'
-import { ExperienceBar } from '../components/ExperienceBar'
-import { Profile } from '../components/Profile'
-import { ChallengesProvider } from '../contexts/ChallengeContext'
 import { CountdownProvider } from '../contexts/CountdownContext'
-import styles from '../styles/pages/Home.module.css'
+import { themeChange } from 'theme-change';
+import ThemeChanger from '../components/ThemeChanger';
+import ModalForm from '../components/Modal';
+import TaskForm from '../components/TaskForm';
+import dynamic from 'next/dynamic';
 
-interface HomeProps{
-	level: number
-	currentExperience: number
-	challengesCompleted: number
-}
+const TaskList = dynamic(() =>import("../components/TaskList"), {ssr: false})
 
-export default function Home(props: HomeProps) {
+export default function Home(){
+	useEffect(() => {
+		themeChange(false);
+	  }, []);
 	return (
-		<ChallengesProvider
-			level={props.level}
-			currentExperience={props.currentExperience}
-			challengesCompleted={props.challengesCompleted}>
-				
-    	<div className={styles.container}>
-			
+    	<div className="p-6 sm:py-6 sm:px-12 my-0 mx-auto flex flex-col flex-1 max-w-sm md:max-w-4xl">
+		<ThemeChanger />
 			<CountdownProvider>
-			<section>
-				<div>
-					<Profile />
-					<CompletedChallenges />
-					<Countdown />
+			<section className="flex flex-col flex-1 md:grid grid-cols-2 gap-8 content-start">
+				<div className="">
+				<Countdown />
+				<div className='my-6 bg-accent/20 rounded-box shadow-lg shadow-accent/10 py-12 px-8 flex flex-col items-center justify-center border border-accent/30'>
+				<TaskForm />
+				<TaskList />
+				</div>
 				</div>
 
 				<div>
-				<ExperienceBar />
 				<ChallengeBox />
 				</div>
 			</section>
 			</CountdownProvider>
 		</div>
-		</ChallengesProvider>
   )
-}
-
-export const getServerSideProps: GetServerSideProps = async (ctx) => {
-
-	const { level, currentExperience, challengesCompleted } = ctx.req.cookies
-
-	return {
-		props: {
-			level: Number(level),
-			currentExperience: Number(currentExperience),
-			challengesCompleted: Number(challengesCompleted)
-		}
-	}
 }

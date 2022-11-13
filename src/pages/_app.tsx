@@ -1,8 +1,8 @@
+import type { AppProps } from "next/app";
 import Head from 'next/head'
-
 import '../styles/styles.css'
 
-function MyApp({ Component, pageProps }) {
+function MyApp({ Component, pageProps }: AppProps) {
   return ( 
 	<>
 	<Head>
@@ -44,7 +44,7 @@ function MyApp({ Component, pageProps }) {
 	<title>Task tracker, movement reminder • Dev·Doro</title>
 	</Head>
 	
-	<main id="main">
+	<main id="main" className="bg-base-100/10">
         <Component {...pageProps} />
 	</main>
 	</>
