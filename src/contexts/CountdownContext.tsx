@@ -7,6 +7,7 @@ interface Challenge {
 }
 
 interface CountdownContextData {
+	time: number,
 	minutes: number
 	seconds: number
 	isFinished: boolean
@@ -28,7 +29,7 @@ export const CountdownContext = createContext({} as CountdownContextData)
 let countdownTimeout: NodeJS.Timeout
 
 export function CountdownProvider({ children }: CountdownProviderProps){
-	const [time, setTime] = useState(25 * 60)
+	const [time, setTime] = useState(0.05 * 60)
 	const [isActive, setIsActive] = useState(false)
 	const [isFinished, setIsFinished] = useState(false)
 	const [activeChallenge, setActiveChallenge] = useState(null)
@@ -44,7 +45,7 @@ export function CountdownProvider({ children }: CountdownProviderProps){
 		clearTimeout(countdownTimeout)
 		setIsActive(false)
 		setIsFinished(false)
-		setTime(25 * 60)
+		setTime(0.05 * 60)
 	}
 
 	function resetChallenge(){
@@ -80,6 +81,7 @@ export function CountdownProvider({ children }: CountdownProviderProps){
 
 	return (
 		<CountdownContext.Provider value={{
+			time,
 			minutes,
 			seconds,
 			isFinished,

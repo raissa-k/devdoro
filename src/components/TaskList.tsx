@@ -87,6 +87,8 @@ export default function TaskList() {
                 	<button className="btn btn-xs sm:btn-sm btn-error rounded-full" onClick={deleteTask}>Delete</button>
                 	<button className="btn btn-xs sm:btn-sm btn-secondary rounded-full" onClick={completeTask}>{task.done === 'false' ? 'Mark done' : 'Mark not done'}</button>
 			</div>
+
+			
         </li>
       ))}
     </ul>

@@ -46,7 +46,7 @@ function MyApp({ Component, pageProps }: AppProps) {
 	<script src="https://cdn.jsdelivr.net/npm/theme-change@2.0.2/index.js"></script>
 	</Head>
 	
-	<main id="main" className="bg-base-100/10">
+	<main id="main">
         <Component {...pageProps} />
 	</main>
 	</>
