@@ -82,10 +82,10 @@ export default function TaskList() {
     <ul role="list" className="flex flex-col divide-y divide-accent/50 border border-accent/30 rounded-box">
       {tasks?.map((task) => (
         <li key={task.id} className="w-full p-6 flex flex-col">
-       		<p className={'text-sm'+(task.done === 'false' ? 'opacity-80' : ' opacity-60 line-through italic')}>{task.task}</p>
+       		<p className={'text-sm '+(task.done === 'false' ? 'opacity-80' : ' opacity-60 line-through italic')}>{task.task}</p>
             <div className="mt-6 flex flex-wrap justify-between md:justify-end gap-6" id={String(task.id)} data-done={task.done}>
                 	<button className="btn btn-xs sm:btn-sm btn-error rounded-full" onClick={deleteTask}>Delete</button>
-                	<button className="btn btn-xs sm:btn-sm btn-secondary rounded-full" onClick={completeTask}>Done</button>
+                	<button className="btn btn-xs sm:btn-sm btn-secondary rounded-full" onClick={completeTask}>{task.done === 'false' ? 'Mark done' : 'Mark not done'}</button>
 			</div>
         </li>
       ))}
