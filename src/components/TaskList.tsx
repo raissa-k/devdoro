@@ -35,6 +35,14 @@ export default function TaskList() {
         }
     }
 
+	const bulkDelete = async() => {
+		try {
+			await taskTable.where({done: "true"}).delete();
+        } catch (error) {
+            console.error(`Failed to delete tasks, ${error}`);
+        }
+	}
+
 	const seeAll = () => {
 		setFilter(false)
 	}
@@ -82,6 +90,11 @@ export default function TaskList() {
         </li>
       ))}
     </ul>
+	<button aria-label='Delete all done' 
+		className={"mt-12 btn btn-md btn-error ml-auto"} 
+		onClick={bulkDelete}>
+			Delete all completed tasks
+		</button>
 	</section>
 	</>
   )
