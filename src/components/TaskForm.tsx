@@ -6,7 +6,7 @@ export function TaskForm() {
         event.preventDefault()
         const task: ITask = {
             task: event.target.addTask.value,
-            done: false
+            done: 'false'
         }
         try {
             await taskTable.add(task);
