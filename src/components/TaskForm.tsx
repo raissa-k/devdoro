@@ -1,7 +1,7 @@
 import { taskTable } from '../db/database.config';
 import { ITask } from '../db/types'; 
 
-export default function TaskForm() {
+export function TaskForm() {
     const createTask = async (event) => {
         event.preventDefault()
         const task: ITask = {
@@ -9,8 +9,7 @@ export default function TaskForm() {
             done: false
         }
         try {
-            const id = await taskTable.add(task);
-            console.info(`A new customer was created with id ${id}`);
+            await taskTable.add(task);
             event.target.reset()
 
         } catch (error) {
@@ -19,7 +18,7 @@ export default function TaskForm() {
     }
     return (
 		<>
-        <h2 className='text-xl font-bold'>Task List</h2>
+        <h2 className='text-3xl font-bold'>Task List</h2>
         <form onSubmit={createTask} className="form-control">
 				<label className="label" id="modalTaskLabel">
 					<span className="label-text">Your task</span>

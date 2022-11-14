@@ -4,7 +4,6 @@ import { taskTable } from '../db/database.config';
 import { ITask } from '../db/types';
 
 export default function TaskList() {
-	const [done, setDone] = useState(false);
     const tasks = useLiveQuery(
         () => taskTable.toArray(),
         []

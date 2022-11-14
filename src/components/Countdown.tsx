@@ -20,7 +20,6 @@ export function Countdown() {
 			<div role="timer" id='countdownTimer'><time>{minutes}:{seconds}</time></div>
 			</div>			  
 			
-			<div>
 			<div id='counter' className="flex items-center" aria-hidden="true">
 				<div className="flex flex-1 justify-evenly items-center text-center text-8xl leading-normal">
 					<span className="flex-1 mr-px border bg-accent/20 rounded-box border-accent/30 shadow-md shadow-accent/10">{minuteLeft}</span>
@@ -31,7 +30,6 @@ export function Countdown() {
 					<span className="flex-1 mr-px border bg-accent/20 rounded-box border-accent/30 shadow-md shadow-accent/10">{secondLeft}</span>
 					<span className="flex-1 ml-px border bg-accent/20 rounded-box border-accent/30 shadow-md shadow-accent/10">{secondRight}</span>
 				</div>
-			</div>
 			</div>
 
 			{ isFinished ? (
