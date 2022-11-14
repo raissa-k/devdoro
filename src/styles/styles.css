@@ -59,29 +59,19 @@ button {
 	outline-offset: 0.25rem;
 }
 
-.skip-link {
-	position: absolute;
-	top: 0;
-	right: 100%;
-	z-index: 500;
-  }
-
-.skip-link:focus {
-	right: auto;
-	background-color: var(--title);
-	color: var(--background);
-	border: var(--background) 3px solid;
-	padding: 1em;
+.btm-nav {
+	z-index: 10;
 }
 
-@media (max-width: 1000px) {
-  html {
-    font-size: 93.75%;
-  }
-}
-
-@media (max-width: 720px) {
-  html {
-    font-size: 87.5%;
-  }
+@media (min-width: 768px) {
+	.btm-nav {
+		position: fixed;
+		z-index: 10;
+		top: 0px;
+		bottom: auto;
+	}
+	.btm-nav>*:where(.active) {
+		border-top-width: 0px;
+		border-bottom-width: 2px;
+	}
 }
