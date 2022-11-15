@@ -1,5 +1,6 @@
-import { taskTable } from '../db/database.config';
-import { ITask } from '../db/types'; 
+
+import { taskTable } from '../../db/database.config';
+import { ITask } from '../../db/types'; 
 
 export function TaskForm() {
     const createTask = async (event) => {
