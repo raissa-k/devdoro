@@ -14,7 +14,7 @@ export function Countdown() {
 
 	return (
 		<>
-		<section aria-label='Countdown' className="absolute z-20 top-24 w-52 h-72 left-1/2 -translate-x-1/2">
+		<section aria-label='Countdown' className="absolute z-20 top-1/2 -translate-y-1/2 w-52 h-72 left-1/2 -translate-x-1/2">
 
 			<div className="absolute left-1/2 -translate-x-1/2 w-80 max-w-xs h-10 bg-gradient-to-b from-secondary-focus via-secondary-focus to-secondary rounded-md -top-[3.2rem] border-secondary border-2">
 				<div className="flex justify-around items-center h-9 label-text-alt">
@@ -38,7 +38,7 @@ export function Countdown() {
 
 
 		</section>
-		<Image src="/icons/Backdrop.svg" priority width={320} height={320} alt="" className="absolute z-10 top-8 left-1/2 -translate-x-1/2 fill-accent blur-md"/>
+		<Image src="/icons/Backdrop.svg" priority width={320} height={320} alt="" className="absolute z-10 top-1/3 -translate-y-1/3 left-1/2 -translate-x-1/2 fill-accent blur-md"/>
 		</>
 	)
 }
