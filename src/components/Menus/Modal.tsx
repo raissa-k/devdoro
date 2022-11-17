@@ -84,7 +84,7 @@ export default function ModalForm({children, modalTitle}: ModalProps) {
 				? ReactDOM.createPortal(
 					<div className="fixed top-0 left-0 z-20 flex h-screen w-screen items-center justify-center bg-neutral/20 backdrop-blur-sm" aria-labelledby="header-modal content-modal" aria-modal="true" tabIndex={-1} role="dialog" >
 						<div ref={wrapperRef}
-						className="flex max-h-[90vh] max-w-sm flex-col gap-4 overflow-hidden rounded bg-base-100 p-6 shadow-xl shadow-primary/20 border border-primary/30" id="modal">
+						className="absolute top-5 flex max-h-[90vh] max-w-sm flex-col gap-4 overflow-hidden rounded bg-base-100 p-6 shadow-xl shadow-primary/20 border border-primary/30" id="modal">
 							<header id="header-modal" className="flex items-center">
 								<h3 className="flex-1 text-lg font-medium">
 									{modalTitle}

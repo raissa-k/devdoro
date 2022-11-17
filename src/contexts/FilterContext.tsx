@@ -14,23 +14,20 @@ interface FilterProviderProps {
 
 export const FilterContext = createContext({} as FilterContextData)
 
-export default function ModalProvider({ children }: FilterProviderProps){
+export default function FilterProvider({ children }: FilterProviderProps){
 	const [filter, setFilter] = useState(false)
 	const [filterStatus, setFilterStatus] = useState(true)
 
 	const seeAll = () => {
 		setFilter(false)
-		console.log("see all")
 	}
 	const seeDone = () => {
 		setFilter(true)
 		setFilterStatus(true)
-		console.log("see some")
 	}
 	const seeNotDone = () => {
 		setFilter(true)
 		setFilterStatus(false)
-		console.log('dont see')
 	}
 
 	return (

@@ -1,4 +1,5 @@
 import dynamic from "next/dynamic";
+import FilterProvider, { FilterContext } from "../../contexts/FilterContext";
 import ModalProvider from "../../contexts/ModalContext";
 import FilterMenu from "../Menus/Filter";
 import ModalForm from "../Menus/Modal";
@@ -10,9 +11,12 @@ const TaskList = dynamic(() =>import("./TaskList"), {ssr: false})
 export function Tasks(){
 	return (
 		<ModalProvider>
-		<section aria-label="Tasks" role={"tabpanel"} id="taskTab" className='mx-auto w-full max-w-xs mb-16 bg-primary/10 rounded-md shadow-md shadow-primary/20 p-2'>
-			<div className="flex justify-between items-start h-10">
-			<h1 className="text-lg font-bold">Tasks</h1>
+		<FilterProvider>
+		<section aria-label="Tasks" role={"tabpanel"} id="taskTab" className='mt-12 mx-auto w-full max-w-xs mb-16 bg-primary/10 rounded-md shadow-md shadow-primary/20 p-2'>
+			<div className="flex justify-between items-start">
+			<h1 className="text-lg font-bold px-1">Tasks</h1>
+			</div>
+			<div className="flex flex-wrap">
 			<FilterMenu />
 			</div>
 			<ModalForm modalTitle="Create task">
@@ -20,6 +24,7 @@ export function Tasks(){
 			</ModalForm>
 			<TaskList />
 		</section>
+		</FilterProvider>
 		</ModalProvider>
 	)
 }

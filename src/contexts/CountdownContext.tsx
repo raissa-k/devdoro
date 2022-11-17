@@ -29,7 +29,7 @@ export const CountdownContext = createContext({} as CountdownContextData)
 let countdownTimeout: NodeJS.Timeout
 
 export function CountdownProvider({ children }: CountdownProviderProps){
-	const [time, setTime] = useState(0.05 * 60)
+	const [time, setTime] = useState(25 * 60)
 	const [isActive, setIsActive] = useState(false)
 	const [isFinished, setIsFinished] = useState(false)
 	const [activeChallenge, setActiveChallenge] = useState(null)
@@ -45,7 +45,7 @@ export function CountdownProvider({ children }: CountdownProviderProps){
 		clearTimeout(countdownTimeout)
 		setIsActive(false)
 		setIsFinished(false)
-		setTime(0.05 * 60)
+		setTime(25 * 60)
 	}
 
 	function resetChallenge(){
