@@ -4,7 +4,7 @@ module.exports = {
 	darkMode: "class",
 	important: true, // important in prod is must be
 	theme: ["winterlight"],
-	plugins: [require("daisyui")],
+	plugins: [require("daisyui"),require("@tailwindcss/forms")],
 	daisyui: {
 		themes: [{
 			winterlight: {

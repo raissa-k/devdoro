@@ -7,6 +7,7 @@ interface Challenge {
 }
 
 interface CountdownContextData {
+	time: number,
 	minutes: number
 	seconds: number
 	isFinished: boolean
@@ -80,6 +81,7 @@ export function CountdownProvider({ children }: CountdownProviderProps){
 
 	return (
 		<CountdownContext.Provider value={{
+			time,
 			minutes,
 			seconds,
 			isFinished,

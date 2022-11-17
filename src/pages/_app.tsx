@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-sync-scripts */
 import type { AppProps } from "next/app";
 import Head from 'next/head'
 import '../styles/styles.css'
@@ -42,9 +43,10 @@ function MyApp({ Component, pageProps }: AppProps) {
 
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<title>Task tracker, movement reminder • Dev·Doro</title>
+	<script src="https://cdn.jsdelivr.net/npm/theme-change@2.0.2/index.js"></script>
 	</Head>
 	
-	<main id="main" className="bg-base-100/10">
+	<main id="main">
         <Component {...pageProps} />
 	</main>
 	</>

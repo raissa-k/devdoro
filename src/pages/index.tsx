@@ -1,10 +1,11 @@
 import { useEffect } from 'react';
 import { themeChange } from 'theme-change';
-import { Timer } from '../components/Timer';
-import { Tasks } from '../components/Tasks';
-import ThemeChanger from '../components/ThemeChanger';
-import Tabs from '../components/Tabs';
+import { Timer } from '../components/Countdown/Timer';
+import { Tasks } from '../components/Tasks/Tasks';
+import Tabs from '../components/Menus/Tabs';
+import Background from '../components/Background';
 import { useRouter } from 'next/router';
+import { ModalContext } from '../contexts/ModalContext';
 
 export default function Home({ router }){
 	router = useRouter()
@@ -18,13 +19,11 @@ export default function Home({ router }){
 	  }, []);
 
 	return (
-    	<div className="p-6 sm:py-6 sm:px-12 my-0 mx-auto flex flex-col flex-1 max-w-sm md:max-w-4xl">
-		<ThemeChanger />
+		<>
+		<Background />
 		<Tabs />
-
-		{isTimerTab && <Timer/>}
-        {isTaskTab && <Tasks/>}
-
-		</div>
+			{isTimerTab && <Timer/>}
+			{isTaskTab && <Tasks/>}
+		</>
   )
 }

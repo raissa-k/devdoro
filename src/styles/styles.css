@@ -45,7 +45,7 @@ button {
 }
 
 *:focus, button:focus { 
-	outline: 0.1em var(--red) solid;
+	outline: 0.1em solid;
 	outline-offset: 0.1rem;
 }
 
@@ -55,23 +55,27 @@ button {
 }
 
 *:focus-visible, button:focus-visible { 
-	outline: 0.25em var(--red) dashed;
+	outline: 0.25em dashed;
 	outline-offset: 0.25rem;
 }
 
-.btm-nav {
-	z-index: 10;
+.shine {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100px;
+    height: 100%;
+    color: rgba(255, 255, 255, 0);
+    background-color: rgba(255, 255, 255,0);
+    background-image: linear-gradient(
+        to right,
+        rgba(255, 255, 255, 0) 25%,
+        rgba(179, 185, 255, .7) 50%,
+        rgba(255, 255, 255, 0) 75%
+    );
+    transform: skewX(-20deg) translateX(-100%);
+    animation: 4s ease-in-out 0s infinite forwards shine;
 }
 
-@media (min-width: 768px) {
-	.btm-nav {
-		position: fixed;
-		z-index: 10;
-		top: 0px;
-		bottom: auto;
-	}
-	.btm-nav>*:where(.active) {
-		border-top-width: 0px;
-		border-bottom-width: 2px;
-	}
+@keyframes shine { 
+    20%, 100% { transform: translateX(150%); }
 }
