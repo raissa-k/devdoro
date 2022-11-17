@@ -21,12 +21,9 @@ export default function Home({ router }){
 	return (
 		<>
 		<Background />
-    	<div className="p-6 sm:py-6 sm:px-12 my-0 mx-auto flex flex-col flex-1 max-w-sm md:max-w-4xl">
-			<Tabs />
-
+		<Tabs />
 			{isTimerTab && <Timer/>}
 			{isTaskTab && <Tasks/>}
-		</div>
 		</>
   )
 }

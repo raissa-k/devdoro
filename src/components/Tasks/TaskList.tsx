@@ -1,4 +1,4 @@
-import {useContext, useState} from 'react';
+import {useContext } from 'react';
 import {useLiveQuery} from "dexie-react-hooks";
 import { taskTable } from '../../db/database.config';
 import { ModalContext } from '../../contexts/ModalContext';
