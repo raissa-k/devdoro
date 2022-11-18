@@ -31,7 +31,6 @@ export function Countdown() {
 	  ]
 
 	return (
-		<>
 		<section aria-label='Countdown' className="mx-auto w-full max-w-xs mt-8 flex flex-col items-center justify-center gap-6 relative">
 
 			<menu className="w-full max-w-xs relative z-20" role={"menu"} aria-label="Timer length">
@@ -57,10 +56,5 @@ export function Countdown() {
 			</div>
 
 			<CountdownMenu/>
-
-
-		<Image src="/images/Backdrop.svg" priority width={320} height={320} alt="" className="absolute z-10 left-1/2 -translate-x-1/2 fill-accent blur-md"/>
 		</section>
-		</>
-	)
-}
+	)}
