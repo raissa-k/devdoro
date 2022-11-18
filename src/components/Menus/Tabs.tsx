@@ -11,8 +11,8 @@ const Tabs = ({ router }) => {
 	return (
 		<>
 		<div className="fixed z-30 left-0 right-0 bottom-0 bg-base-100/80 rounded-t-2xl">
-		<nav className="flex justify-center py-2 gap-8 bg-accent/80 rounded-t-2xl">
-			<div role={"tablist"} className="flex justify-center py-2 gap-6">
+		<nav className="flex justify-center py-2 gap-6 sm:gap-4 bg-accent/80 rounded-t-2xl">
+			<div role={"tablist"} className="flex justify-center py-2 gap-4 sm:gap-8">
 			<Link role={"tab"} href={{ pathname: "/", query: { tab: "timer" } }} className={"flex flex-col justify-center items-center rounded-2xl flex-grow-0 p-2 hover:opacity-60 transition-opacity text-accent-content "+(isTimerTab ? "bg-secondary/10 shadow-md shadow-accent-content/20" : "")}>
 				<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6" aria-hidden="true">
   				<path strokeLinecap="round" strokeLinejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" />

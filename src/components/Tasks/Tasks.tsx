@@ -12,11 +12,9 @@ export function Tasks(){
 	return (
 		<ModalProvider>
 		<FilterProvider>
-		<section aria-label="Tasks" role={"tabpanel"} id="taskTab" className='mt-12 mx-auto w-full max-w-xs mb-16 bg-primary/10 rounded-md shadow-md shadow-primary/20 p-2'>
-			<div className="flex justify-between items-start">
-			<h1 className="text-lg font-bold px-1">Tasks</h1>
-			</div>
-			<div className="flex flex-wrap">
+		<section aria-label="Tasks" role={"tabpanel"} id="taskTab" className='mx-auto w-full max-w-xs mt-8 flex flex-col items-center justify-center gap-4 mb-16 bg-primary/10 rounded-md shadow-md shadow-primary/20 p-2 relative z-20'>
+			<div className="w-full flex flex-wrap justify-between items-start p-1">
+			<h1 className="text-lg font-bold">Tasks</h1>
 			<FilterMenu />
 			</div>
 			<ModalForm modalTitle="Create task">
