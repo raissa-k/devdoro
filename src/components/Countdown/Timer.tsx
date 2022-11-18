@@ -8,7 +8,7 @@ export function Timer(){
 	return (
 		<CountdownProvider>
 		<ModalProvider>
-		<section aria-label="Timer" role={"tabpanel"} className="mb-16 md:mb-0 flex flex-col flex-1 md:grid grid-cols-2 gap-8 content-start">
+		<section aria-label="Timer" role={"tabpanel"} className="flex flex-col items-center min-h-screen">
 			<Countdown />
 			<ModalForm modalTitle="Move around!">
 				<Exercise />

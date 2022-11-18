@@ -18,6 +18,7 @@ interface CountdownContextData {
 	resetChallenge: () => void
 	completeChallenge: () => void
 	startNewChallenge: () => void
+	skipTimer: () => void
 }
 
 interface CountdownProviderProps {
@@ -45,6 +46,11 @@ export function CountdownProvider({ children }: CountdownProviderProps){
 		clearTimeout(countdownTimeout)
 		setIsActive(false)
 		setIsFinished(false)
+		setTime(25 * 60)
+	}
+
+	function skipTimer() {
+		clearTimeout(countdownTimeout)
 		setTime(25 * 60)
 	}
 
@@ -91,7 +97,8 @@ export function CountdownProvider({ children }: CountdownProviderProps){
 			resetCountdown,
 			resetChallenge,
 			completeChallenge,
-			startNewChallenge
+			startNewChallenge,
+			skipTimer
 		}}>
 			{children}
 		</CountdownContext.Provider>

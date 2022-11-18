@@ -12,33 +12,49 @@ export function Countdown() {
 	const [minuteLeft, minuteRight] = String(minutes).padStart(2, '0').split('')
 	const [secondLeft, secondRight] = String(seconds).padStart(2, '0').split('')
 
+	const timerLengths = [
+		{
+			name: "Pomodoro",
+			minutes: 25,
+			function: "seeAll"
+		},
+		{
+			name: "Short break",
+			minutes: 5,
+			function: "seeAll"
+		},
+		{
+			name: "Long break",
+			minutes: 20,
+			function: "seeAll"
+		}
+	  ]
+
 	return (
-		<>
-		<section aria-label='Countdown' className="absolute z-20 top-1/2 -translate-y-1/2 w-52 h-72 left-1/2 -translate-x-1/2">
+		<section aria-label='Countdown' className="mx-auto w-full max-w-xs mt-8 flex flex-col items-center justify-center gap-6 relative">
 
-			<div className="absolute left-1/2 -translate-x-1/2 w-80 max-w-xs h-10 bg-gradient-to-b from-secondary-focus via-secondary-focus to-secondary rounded-md -top-[3.2rem] border-secondary border-2">
-				<div className="flex justify-around items-center h-9 label-text-alt">
-					<button className="badge badge-secondary py-3 hover:bg-secondary-focus hover:border-secondary/40 active:bg-secondary-focus shadow shadow-secondary-focus/20 border-accent-content/10">Pomodoro</button>
-					<button className="badge badge-secondary py-3 hover:bg-secondary-focus hover:border-secondary/40 active:bg-secondary-focus border-accent-content/10">Short break</button>
-					<button className="badge badge-secondary py-3 hover:bg-secondary-focus hover:border-secondary/40 active:bg-secondary-focus active:border-accent-content/10">Long break</button>
+			<menu className="w-full max-w-xs relative z-20" role={"menu"} aria-label="Timer length">
+				<div className="flex flex-wrap gap-2 justify-around items-center label-text-alt">
+				{timerLengths.map((item, index) => {
+					return (
+						<button key={index} aria-label={`${item.name}, ${item.minutes} minutes`} role={"menuitem"}
+						className="btn btn-secondary btn-xs rounded-full shadow-md shadow-accent/20">
+							{item.name}
+						</button>
+					)
+				})}
 				</div>
-			</div>
+			</menu>
 
-				<svg width="122" height="17" viewBox="0 0 122 17" fill="none" xmlns="http://www.w3.org/2000/svg" className='absolute left-1/2 -translate-x-1/2 -top-[0.7rem]'>
-					<path d="M30 17C42.5 8.28004 35.5 0 0 0H122C82 0 78 8.28004 92 17H30Z" className='fill-secondary'/>
-				</svg>
-			<div className="w-48 h-48 rounded-full bg-gradient-to-b from-secondary-focus via-secondary to-secondary mx-auto border-secondary border-[0.35rem] shadow-md shadow-accent/40">
-				<div role="timer">
+			<div className="flex items-center justify-center rounded-full w-48 h-48 sm:w-64 sm:h-64 mx-auto bg-gradient-to-b from-secondary-focus via-accent/70 to-accent/70 border-secondary border-[0.35rem] shadow-lg shadow-accent/20 relative z-20 overflow-hidden">
+				<div role="timer" className='relative z-30'>
 					<time aria-labelledby="timerP"></time>
-					<p id="timerP" aria-hidden="true" className="absolute text-secondary-content text-5xl font-bold font-sans left-1/2 -translate-x-1/2 top-24 -translate-y-6 z-30">{minuteLeft}{minuteRight}:{secondLeft}{secondRight}</p>
+					<p id="timerP" aria-hidden="true" className="text-6xl sm:text-7xl text-accent-content/80 font-bold font-sans">{minuteLeft}{minuteRight}:{secondLeft}{secondRight}</p>
+				</div>
+				<div className="absolute bottom-0 z-20 h-[0%] w-screen align-bottom bg-[url('/images/waves.svg')]">
 				</div>
 			</div>
 
 			<CountdownMenu/>
-
-
 		</section>
-		<Image src="/icons/Backdrop.svg" priority width={320} height={320} alt="" className="absolute z-10 top-1/3 -translate-y-1/3 left-1/2 -translate-x-1/2 fill-accent blur-md"/>
-		</>
-	)
-}
+	)}
