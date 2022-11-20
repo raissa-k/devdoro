@@ -1,16 +1,46 @@
 /* eslint-disable @next/next/no-img-element */
 import Image from 'next/image'
-import { useContext } from 'react'
-import { CountdownContext } from '../contexts/CountdownContext'
+import { useContext, useEffect, useState } from 'react'
+import { timerActions } from "../contexts/TimerReducer";
 import { ModalContext } from '../contexts/ModalContext'
+import { useTimer, useTimerDispatch } from '../contexts/TimerContext';
+import challenges from '../../challenges.json'
+
+interface Challenge {
+	type: 'body' | 'eye';
+	description: string;
+}
 
 export function Exercise() {
-	const { activeChallenge, resetChallenge, resetCountdown } = useContext(CountdownContext)
+	const [activeChallenge, setActiveChallenge] = useState<Challenge | null>()
 	const { closeModal } = useContext(ModalContext)
+	const state = useTimer()
+	const { dispatch } = useTimerDispatch()
 
-	function handleChallengeDone(){
+	function resetChallenge(){
+		setActiveChallenge(null)
+	}
+
+	function startNewChallenge(){
+		let randomChallengeIndex = Math.floor(Math.random() * challenges.length)
+		const challenge = challenges[randomChallengeIndex] as Challenge
+		setActiveChallenge(challenge)
+	}
+
+	useEffect(() => {
+		if (state.start && state.time === 0) {
+			startNewChallenge()
+		}
+	}, [state])
+
+	function handleRepeatTimer(){
 		resetChallenge()
-		resetCountdown()
+		dispatch({ type: timerActions.skip})
+		closeModal()
+	}
+	function handleEndCycle(){
+		resetChallenge()
+		dispatch({ type: timerActions.stop})
 		closeModal()
 	}
 
@@ -20,12 +50,20 @@ export function Exercise() {
 				<div className="flex flex-col gap-6 text-center leading-7">
 						<img src={`icons/${activeChallenge.type}.svg`} className="h-20" alt="" />
 						<p>{activeChallenge.description}</p>
-						<button type='button' 
-						aria-label='Move to next timer'
-						className="btn btn-secondary mx-auto rounded-full"
-						onClick={handleChallengeDone}>
-							Move to next timer
-						</button>
+						<footer className='flex flex-wrap gap-4'>
+							<button type='button' 
+							aria-label='Repeat timer'
+							className="btn btn-accent mx-auto rounded-full"
+							onClick={handleRepeatTimer}>
+								Repeat timer
+							</button>
+							<button type='button' 
+							aria-label='End this cycle'
+							className="btn btn-secondary mx-auto rounded-full"
+							onClick={handleEndCycle}>
+								End cycle
+							</button>
+						</footer>
 				</div>
 			) : (
 			<div className="flex flex-col items-center justify-center text-center gap-8">
