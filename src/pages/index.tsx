@@ -1,11 +1,10 @@
 import { useEffect } from 'react';
 import { themeChange } from 'theme-change';
-import { Timer } from '../components/Countdown/Timer';
+import { Timer } from '../components/Timer/Timer';
 import { Tasks } from '../components/Tasks/Tasks';
 import Tabs from '../components/Menus/Tabs';
 import Background from '../components/Background';
 import { useRouter } from 'next/router';
-import { ModalContext } from '../contexts/ModalContext';
 
 export default function Home({ router }){
 	router = useRouter()

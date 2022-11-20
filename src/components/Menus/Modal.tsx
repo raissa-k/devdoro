@@ -10,7 +10,7 @@ interface ModalProps {
 export default function ModalForm({children, modalTitle}: ModalProps) {
 	const { isShowing, closeModal } = useContext(ModalContext)
 
-	const wrapperRef = useRef(null)
+	const wrapperRef = useRef<HTMLDivElement>(null)
 
 	useEffect(() => {
 		function handleClickOutside(event: { target: any }) {
