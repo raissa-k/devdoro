@@ -21,9 +21,10 @@ export default function ClockActionsMenu(){
 			<div className="text-secondary-content bg-gradient-to-b from-secondary to-secondary-focus h-20 w-20 rounded-full border-secondary border-4 shadow-lg shadow-accent/20 flex items-center justify-center">
 				{ state.start && state.time === 0 ? (
 				<button
-				aria-label='Cycle ended'  
+				aria-label='Cycle ended'
+				aria-disabled="true"
 				disabled
-				className="btn btn-circle btn-disabled btn-lg flex justify-center items-center">
+				className="btn btn-circle btn-lg flex justify-center items-center text-accent/30">
 					<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-10 h-10">
 						<path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
 					</svg>
@@ -31,9 +32,9 @@ export default function ClockActionsMenu(){
 				) : (
 				<>
 				{ state.start && state.time > 0 ? (
-					<button type='button' onClick={() => dispatch({type: timerActions.stop})} aria-label="Reset countdown" title="Reset countdown" className="btn btn-ghost hover:btn-secondary btn-circle btn-lg flex justify-center items-center relative z-20">
-						<svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" fill='none' className="w-8 h-8 pointer-events-none">
-							<path strokeLinecap="round" strokeLinejoin="round" d="M9 15L3 9m0 0l6-6M3 9h12a6 6 0 010 12h-3" />
+					<button type='button' onClick={() => dispatch({type: timerActions.stop})} aria-label="Stop countdown" title="Stop countdown" className="btn btn-ghost hover:btn-secondary btn-circle btn-lg flex justify-center items-center group relative z-20">
+						<svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-8 h-8 pointer-events-none group-hover:fill-secondary-content">
+							<path strokeLinecap="round" strokeLinejoin="round" d="M5.25 7.5A2.25 2.25 0 017.5 5.25h9a2.25 2.25 0 012.25 2.25v9a2.25 2.25 0 01-2.25 2.25h-9a2.25 2.25 0 01-2.25-2.25v-9z" />
 						</svg>
 					</button>
 				) : (
@@ -48,11 +49,25 @@ export default function ClockActionsMenu(){
 			</div>
 
 			<div className="bg-gradient-to-b from-secondary to-primary h-12 w-12 rounded-full shadow-lg shadow-accent/20 flex items-center justify-center">
-				<button type='button' title="Skip timer" onClick={() => dispatch({ type: timerActions.skip})} aria-label="Skip timer" className="group relative z-20 btn btn-circle items-center hover:btn-secondary btn-ghost text-accent">
+			{ state.start && state.time > 0 ? (
+				<button type='button'
+				title="Restart timer" 
+				onClick={() => dispatch({ type: timerActions.skip})} 
+				aria-label="Restart timer" className="group relative z-20 btn btn-circle items-center hover:btn-secondary btn-ghost text-accent">
 					<svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6 pointer-events-none">
-						<path strokeLinecap="round" strokeLinejoin="round" d="M3 8.688c0-.864.933-1.405 1.683-.977l7.108 4.062a1.125 1.125 0 010 1.953l-7.108 4.062A1.125 1.125 0 013 16.81V8.688zM12.75 8.688c0-.864.933-1.405 1.683-.977l7.108 4.062a1.125 1.125 0 010 1.953l-7.108 4.062a1.125 1.125 0 01-1.683-.977V8.688z" />
+						<path strokeLinecap="round" strokeLinejoin="round" d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0l3.181 3.183a8.25 8.25 0 0013.803-3.7M4.031 9.865a8.25 8.25 0 0113.803-3.7l3.181 3.182m0-4.991v4.99" />
 					</svg>
 				</button>
+				) : (
+				<button type='button'
+					title="Restart timer" 
+					disabled
+					aria-label="Restart timer" aria-disabled="true" className="group relative z-20 btn btn-circle items-center text-accent/30">
+						<svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6 pointer-events-none">
+							<path strokeLinecap="round" strokeLinejoin="round" d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0l3.181 3.183a8.25 8.25 0 0013.803-3.7M4.031 9.865a8.25 8.25 0 0113.803-3.7l3.181 3.182m0-4.991v4.99" />
+						</svg>
+				</button>
+				)}
 			</div>
 		</div>
 	)
