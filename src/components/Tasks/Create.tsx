@@ -11,7 +11,8 @@ export function CreateTask() {
         event.preventDefault()
         const task: ITask = {
             task: event.target.addTask.value,
-            done: 'false'
+            done: 0,
+			order: 0
         }
         try {
             await taskTable.add(task);
@@ -25,7 +26,12 @@ export function CreateTask() {
     return (
 		<div id="content-modal">
 			<form className="form-control gap-6 py-6" onSubmit={createTask}>
-				<input name="addTask" aria-labelledby="headerTitle" placeholder="To do..." className="input input-primary w-full"/>
+				<div className="form-control">
+				<label htmlFor="form-task" className="label">
+					<span className="label-text">What are you going to do?</span>
+				</label>
+				<input id="form-task" type="text" required name="addTask" placeholder="To do..." className="input input-primary w-full"/>
+				</div>
 
 				<button type='submit' aria-label="Save this task" className="btn btn-primary rounded-md gap-2 shadow shadow-primary/20" >
 					<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">

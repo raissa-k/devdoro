@@ -1,8 +1,8 @@
 import { createContext, ReactNode, useState } from "react";
 
 interface FilterContextData {
-	filter: boolean,
-	filterStatus: boolean
+	isFilterActive: boolean,
+	filteredStatus: 0|1,
 	seeAll: () => void,
 	seeDone: () => void,
 	seeNotDone: () => void
@@ -15,24 +15,24 @@ interface FilterProviderProps {
 export const FilterContext = createContext({} as FilterContextData)
 
 export default function FilterProvider({ children }: FilterProviderProps){
-	const [filter, setFilter] = useState(false)
-	const [filterStatus, setFilterStatus] = useState(true)
+	const [isFilterActive, setIsFilterActive] = useState(false)
+	const [filteredStatus, setFilteredStatus] = useState<0|1>(0)
 
 	const seeAll = () => {
-		setFilter(false)
+		setIsFilterActive(false)
 	}
 	const seeDone = () => {
-		setFilter(true)
-		setFilterStatus(true)
+		setIsFilterActive(true)
+		setFilteredStatus(1)
 	}
 	const seeNotDone = () => {
-		setFilter(true)
-		setFilterStatus(false)
+		setIsFilterActive(true)
+		setFilteredStatus(0)
 	}
 
 	return (
 		<FilterContext.Provider value={{
-			filter, filterStatus, seeAll, seeDone, seeNotDone
+			isFilterActive, filteredStatus, seeAll, seeDone, seeNotDone
 		}}>
 			{children}
 		</FilterContext.Provider>
