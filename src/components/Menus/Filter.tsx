@@ -1,8 +1,8 @@
 import React, { useContext } from "react"
-import { FilterContext } from "../../contexts/FilterContext"
+import { TaskContext } from "../../contexts/TaskContext"
 
 export default function FilterMenu() {
-  const {filter, filterStatus, seeAll, seeDone, seeNotDone} = useContext(FilterContext)
+  const {seeAll, seeDone, seeNotDone} = useContext(TaskContext)
 
   const filterItems = [
     {

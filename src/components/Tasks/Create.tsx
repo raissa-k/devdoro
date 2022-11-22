@@ -1,29 +1,10 @@
 
-import { useContext, useState } from 'react';
-import { ModalContext } from '../../contexts/ModalContext';
-import { taskTable } from '../../db/database.config';
-import { ITask } from '../../db/types'; 
+import { useContext } from 'react';
+import { TaskContext } from '../../contexts/TaskContext';
 
 export function CreateTask() {
-	const { closeModal } = useContext(ModalContext)
+	const { createTask } = useContext(TaskContext)
 
-    const createTask = async (event) => {
-		let taskLength = await taskTable.count()
-        event.preventDefault()
-        const task: ITask = {
-            task: event.target.addTask.value,
-            done: 0,
-			order: taskLength
-        }
-        try {
-            await taskTable.add(task);
-            event.target.reset()
-			closeModal()
-			location.replace('/?tab=tasks')
-        } catch (error) {
-            console.error(`Failed to add ${task}: ${error}`);
-        }
-    }
     return (
 		<div id="content-modal">
 			<form className="form-control gap-6 py-6" onSubmit={createTask}>
