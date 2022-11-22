@@ -8,17 +8,18 @@ export function CreateTask() {
 	const { closeModal } = useContext(ModalContext)
 
     const createTask = async (event) => {
+		let taskLength = await taskTable.count()
         event.preventDefault()
         const task: ITask = {
             task: event.target.addTask.value,
             done: 0,
-			order: 0
+			order: taskLength
         }
         try {
             await taskTable.add(task);
             event.target.reset()
 			closeModal()
-
+			location.replace('/?tab=tasks')
         } catch (error) {
             console.error(`Failed to add ${task}: ${error}`);
         }
