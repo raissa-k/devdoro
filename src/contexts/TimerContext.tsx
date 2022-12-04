@@ -1,40 +1,13 @@
-import {createContext, Dispatch, ReactNode, useCallback, useContext, useEffect, useMemo, useReducer, useState} from "react";
+import {createContext, useCallback, useContext, useEffect, useMemo, useReducer, useState} from "react";
+import { TimerContextDataTypes, TimerDispatchContextDataTypes, TimerProviderPropTypes } from "../types/types";
 import {TimerReducer, initialState, timerActions} from "./TimerReducer";
 
-interface TimerProviderProps {
-	children: ReactNode
-}
+export const TimerContext = createContext({} as TimerContextDataTypes)
+export const TimerDispatchContext = createContext({} as TimerDispatchContextDataTypes)
 
-interface TimerContextData {
-	time: number;
-    initialTime: number;
-    mode: string;
-    settings: {
-        time: {
-            pomodoro: number;
-            'long break': number;
-            'short break': number;
-        };
-    };
-    start: boolean;
-}
-
-interface TimerDispatchContextData {
-	onClick: (item: object) => void,
-	convertTime: (arg: number) => string,
-	waveHeight: number,
-	dispatch: Dispatch<any>
-}
-
-export const TimerContext = createContext({} as TimerContextData)
-export const TimerDispatchContext = createContext({} as TimerDispatchContextData)
-
-export default function TimerProvider({ children }: TimerProviderProps){
+export default function TimerProvider({ children }: TimerProviderPropTypes){
 	const [state, dispatch] = useReducer(TimerReducer, initialState)
-	const [value, setValue] = useState({
-		mode: initialState.mode,
-		time: Object.values(initialState.settings.time)[0]
-	})
+	const [duration, setDuration] = useState(initialState)
     
 	const waveHeight = useMemo<number>(() => {
 		return ~~((1 - state.time / (state.settings.time[state.mode] * 60)) * 100) 
@@ -45,28 +18,26 @@ export default function TimerProvider({ children }: TimerProviderProps){
         return new Date(_seconds * 1000).toISOString().substring(14, 19);
     };
 
-	const onClick = useCallback((item: [string, number]) => {
-        setValue({
+	const handleModeChange = useCallback((item: [string, number]) => {
+        setDuration({
+			...state,
 			mode: item[0],
 			time: item[1]
 		});
-
         dispatch({
             type: timerActions.setTime,
             time: item[1]
         });
-
 		dispatch({
 				type: timerActions.setMode,
 				mode: item[0],
 				time: item[1] * 60
 			})
-
 		dispatch({
 			type: timerActions.setTime,
 			time: item[1] * 60,
 		});
-    }, [dispatch]);
+    }, [state, dispatch]);
 
 	useEffect(() => {
 		const audio = new Audio('/notification.mp3')
@@ -90,7 +61,7 @@ export default function TimerProvider({ children }: TimerProviderProps){
 
     return (
         <TimerContext.Provider value={state}>
-			<TimerDispatchContext.Provider value={{onClick, convertTime, dispatch, waveHeight}}>
+			<TimerDispatchContext.Provider value={{handleModeChange, convertTime, dispatch, waveHeight}}>
             {children}
 			</TimerDispatchContext.Provider>
         </TimerContext.Provider>

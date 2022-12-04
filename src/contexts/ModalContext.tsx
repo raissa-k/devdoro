@@ -1,18 +1,9 @@
 import { createContext, ReactNode, useState } from "react";
+import { ModalContextDataTypes, ModalProviderPropsTypes } from "../types/types";
 
-interface ModalContextData {
-	isShowing: boolean,
-	closeModal: () => void,
-	openModal: () => void,
-}
+export const ModalContext = createContext({} as ModalContextDataTypes)
 
-interface ModalProviderProps {
-	children: ReactNode
-}
-
-export const ModalContext = createContext({} as ModalContextData)
-
-export default function ModalProvider({ children }: ModalProviderProps){
+export default function ModalProvider({ children }: ModalProviderPropsTypes){
 	const [isShowing, setIsShowing] = useState(false)
 	function closeModal(){
 		setIsShowing(false)

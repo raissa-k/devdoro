@@ -5,14 +5,10 @@ import { timerActions } from "../contexts/TimerReducer";
 import { ModalContext } from '../contexts/ModalContext'
 import { useTimer, useTimerDispatch } from '../contexts/TimerContext';
 import challenges from '../../challenges.json'
-
-interface Challenge {
-	type: 'body' | 'eye';
-	description: string;
-}
+import { ChallengeTypes } from '../types/types';
 
 export function Exercise() {
-	const [activeChallenge, setActiveChallenge] = useState<Challenge | null>()
+	const [activeChallenge, setActiveChallenge] = useState<ChallengeTypes | null>()
 	const { closeModal } = useContext(ModalContext)
 	const state = useTimer()
 	const { dispatch } = useTimerDispatch()
@@ -23,12 +19,12 @@ export function Exercise() {
 
 	function startNewChallenge(){
 		let randomChallengeIndex = Math.floor(Math.random() * challenges.length)
-		const challenge = challenges[randomChallengeIndex] as Challenge
+		const challenge = challenges[randomChallengeIndex] as ChallengeTypes
 		setActiveChallenge(challenge)
 	}
 
 	useEffect(() => {
-		if (state.start && state.time === 0) {
+		if (state.mode.match("pomodoro") && state.start && state.time === 0) {
 			startNewChallenge()
 		}
 	}, [state])
@@ -66,7 +62,7 @@ export function Exercise() {
 						</footer>
 				</div>
 			) : (
-			<div className="flex flex-col items-center justify-center text-center gap-8">
+			<div className="flex flex-col items-center justify-center text-center gap-8 p-6">
 				<p id="challengeTitle" className="text-2xl font-bold">Finish a cycle, get a stretch suggestion</p>
 				<Image src={"/icons/hourglass.svg"} width={80} height={80} className="h-20" alt=""/>
 				<p className="text-lg">

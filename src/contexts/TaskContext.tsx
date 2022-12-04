@@ -1,30 +1,12 @@
 import { useLiveQuery } from "dexie-react-hooks";
-import { createContext, FormEvent, ReactNode, SyntheticEvent, useContext, useState } from "react";
+import { createContext, FormEvent, SyntheticEvent, useContext, useState } from "react";
 import database, { taskTable } from "../db/database.config";
-import { ITask } from "../db/types";
+import { ITask, TaskContextDataTypes, TaskProviderPropsTypes } from "../types/types";
 import { ModalContext } from "./ModalContext";
 
-interface TaskContextData {
-	tasks: ITask[]
-	isFilterActive: boolean,
-	filteredStatus: 0|1,
-	seeAll: () => void,
-	seeDone: () => void,
-	seeNotDone: () => void,
-	toggleCompleteTask: (event: SyntheticEvent<HTMLElement>) => Promise<void>,
-	createTask: (event:  FormEvent<HTMLFormElement>) => Promise<void>,
-	deleteTask: (event: SyntheticEvent<HTMLButtonElement>) => Promise<void>,
-	bulkDelete: () => Promise<void>,
-	updateDbOrder: (items?: ITask[]) => Promise<void>,
-}
+export const TaskContext = createContext({} as TaskContextDataTypes)
 
-interface TaskProviderProps {
-	children: ReactNode
-}
-
-export const TaskContext = createContext({} as TaskContextData)
-
-export default function TaskProvider({ children }: TaskProviderProps){
+export default function TaskProvider({ children }: TaskProviderPropsTypes){
 	const { closeModal } = useContext(ModalContext)
 	const [isFilterActive, setIsFilterActive] = useState(false)
 	const [filteredStatus, setFilteredStatus] = useState<0|1>(0)

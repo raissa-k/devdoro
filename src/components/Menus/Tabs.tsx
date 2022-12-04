@@ -7,6 +7,7 @@ const Tabs = ({ router }) => {
 
 	const isTimerTab = tab === "timer" || tab == null
 	const isTaskTab = tab === "tasks"
+	const isSettingsTab = tab === "settings"
 
 	return (
 		<>
@@ -25,7 +26,7 @@ const Tabs = ({ router }) => {
 				</svg>
 				<span className="text-xs">Tasks</span>
 			</Link>
-			<Link href="/" tabIndex={-1} aria-disabled="true" className={"flex flex-col justify-center items-center flex-grow-0 text-gray-600 pointer-events-none"}>
+			<Link href={{ pathname: "/", query: { tab: "settings" } }} as={"/"} className={"flex flex-col justify-center items-center rounded-2xl flex-grow-0 p-2 hover:opacity-60 transition-opacity text-accent-content "+(isSettingsTab ? "bg-secondary/10 shadow-md shadow-accent-content/20" : "")}>
 				<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6" aria-hidden="true">
 					<path strokeLinecap="round" strokeLinejoin="round" d="M10.5 6h9.75M10.5 6a1.5 1.5 0 11-3 0m3 0a1.5 1.5 0 10-3 0M3.75 6H7.5m3 12h9.75m-9.75 0a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m-3.75 0H7.5m9-6h3.75m-3.75 0a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m-9.75 0h9.75" />
 				</svg>
