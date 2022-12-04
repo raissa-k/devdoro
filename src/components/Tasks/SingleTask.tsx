@@ -1,7 +1,7 @@
 import { useContext } from 'react';
 import { TaskContext } from '../../contexts/TaskContext';
 import { Draggable } from 'react-beautiful-dnd'
-import { ITask } from '../../db/types';
+import { ITask } from '../../types/types';
 
 
 export default function SingleTask({...task}: ITask) {

@@ -1,15 +1,10 @@
 import { useRef, useEffect, ReactNode, useContext } from "react"
 import ReactDOM from "react-dom"
 import { ModalContext } from "../../contexts/ModalContext"
+import { ModalPropsTypes } from "../../types/types"
 
-interface ModalProps {
-	children: ReactNode,
-	modalTitle: string
-}
-
-export default function ModalForm({children, modalTitle}: ModalProps) {
+const ModalForm = ({children, modalTitle}: ModalPropsTypes) => {
 	const { isShowing, closeModal } = useContext(ModalContext)
-
 	const wrapperRef = useRef<HTMLDivElement>(null)
 
 	useEffect(() => {
@@ -45,11 +40,11 @@ export default function ModalForm({children, modalTitle}: ModalProps) {
 					focusableContent[focusableContent.length - 1] as HTMLElement
 
 				document.addEventListener("keydown", function (e) {
-					if (e.DOM_KEY_LOCATION_STANDARD === 27) {
-						closeModal()
-					}
+					if (e.key === "Escape") {
+						closeModal();
+					  }
 
-					let isTabPressed = e.key === "Tab" || e.DOM_KEY_LOCATION_STANDARD === 9
+					let isTabPressed = e.key === "Tab" || e.DOM_KEY_LOCATION_STANDARD === 9;
 
 					if (!isTabPressed) {
 						return
@@ -108,3 +103,5 @@ export default function ModalForm({children, modalTitle}: ModalProps) {
 		</>
 	)
 }
+
+export default ModalForm

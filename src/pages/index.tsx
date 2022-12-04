@@ -5,6 +5,7 @@ import { Tasks } from '../components/Tasks/Tasks';
 import Tabs from '../components/Menus/Tabs';
 import Background from '../components/Background';
 import { useRouter } from 'next/router';
+import { Settings } from '../components/Settings/Settings';
 
 export default function Home({ router }){
 	router = useRouter()
@@ -12,6 +13,7 @@ export default function Home({ router }){
 
 	const isTimerTab = tab === "timer" || tab == null
 	const isTaskTab = tab === "tasks"
+	const isSettingsTab = tab === "settings"
 
 	useEffect(() => {
 		themeChange(false);
@@ -23,6 +25,7 @@ export default function Home({ router }){
 		<Tabs />
 			{isTimerTab && <Timer/>}
 			{isTaskTab && <Tasks/>}
+			{isSettingsTab && <Settings/>}
 		</>
   )
 }
