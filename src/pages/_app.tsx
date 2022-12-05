@@ -42,7 +42,6 @@ function Devdoro({ Component, pageProps }: AppProps) {
 	<meta property="og:image" content="https://i.imgur.com/RPUgvu1.jpg" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<title>Task tracker, movement reminder • Dev·Doro</title>
-	<script src="https://cdn.jsdelivr.net/npm/theme-change@2.0.2/index.js"></script>
 	</Head>	
 	<main id="main">
         <Component {...pageProps} />
