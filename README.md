@@ -23,7 +23,7 @@ A pomodoro task tracker for developers who forget to blink and move around every
 
 ## Tech Stack
 
-- Uses `Next.js` with `TypeScript`,
+- Uses `React`/`Next.js` with `TypeScript`,
 - Styling is done with `TailwindCSS`, `daisyUI` and daisy's `themechange` helper,
 - `next-pwa` to set up PWA,
 - `dexie.js` as a wrapper for IndexedDB,
