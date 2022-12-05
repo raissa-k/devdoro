@@ -55,13 +55,9 @@ This project, although not completely finished, was great to practice TypeScript
 - [ ]  Add counter of cycles
 - [ ]  Move user settings to indexedDB so they're not reset 
 
-## Screenshots
-
-## Screenshots
-
 <details><summary>
   
-  ### Screenshots
+  ## Screenshots
   
 </summary>
 
