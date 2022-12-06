@@ -13,22 +13,22 @@ export interface initialStateTypes {
 	mode: string,
 	settings: {
 		time: {
-			'pomodoro': number,
-			'long': number,
-			'short': number,
+			"pomodoro": number,
+			"long": number,
+			"short": number,
 		}
 	},
 	start: boolean
 }
 
 export enum ActionTypes {
-	setTime = 'set_time',
-	setMode = 'set_mode',
-	start = 'timer_start',
-	stop = 'timer_stop',
-	skip = 'timer_skip',
-	tickdown = 'tickdown',
-	userTime = 'set_user_time'
+	setTime = "set_time",
+	setMode = "set_mode",
+	start = "timer_start",
+	stop = "timer_stop",
+	skip = "timer_skip",
+	tickdown = "tickdown",
+	userTime = "set_user_time"
 }
 
 export type Action = {
@@ -38,7 +38,7 @@ export type Action = {
 }
 
 export interface ChallengeTypes {
-	type: 'body' | 'eye';
+	type: "body" | "eye";
 	description: string;
 }
 
@@ -85,9 +85,9 @@ export interface TimerContextDataTypes {
     mode: string;
     settings: {
         time: {
-            'pomodoro': number;
-            'long': number;
-            'short': number;
+            "pomodoro": number;
+            "long": number;
+            "short": number;
         };
     };
     start: boolean;

@@ -1,43 +1,43 @@
-import { useRef, useEffect, ReactNode, useContext } from "react"
-import ReactDOM from "react-dom"
-import { ModalContext } from "../../contexts/ModalContext"
-import { ModalPropsTypes } from "../../types/types"
+import { useRef, useEffect, useContext } from "react";
+import ReactDOM from "react-dom";
+import { ModalContext } from "../../contexts/ModalContext";
+import { ModalPropsTypes } from "../../types/types";
 
 const ModalForm = ({children, modalTitle}: ModalPropsTypes) => {
-	const { isShowing, closeModal } = useContext(ModalContext)
-	const wrapperRef = useRef<HTMLDivElement>(null)
+	const { isShowing, closeModal } = useContext(ModalContext);
+	const wrapperRef = useRef<HTMLDivElement>(null);
 
 	useEffect(() => {
 		function handleClickOutside(event: { target: any }) {
 			if (wrapperRef.current && !wrapperRef.current.contains(event.target)) {
-				closeModal()
+				closeModal();
 			}
 		}
-		document.addEventListener("mousedown", handleClickOutside)
+		document.addEventListener("mousedown", handleClickOutside);
 		return () => {
-			document.removeEventListener("mousedown", handleClickOutside)
-		}
-	}, [wrapperRef, closeModal])
+			document.removeEventListener("mousedown", handleClickOutside);
+		};
+	}, [wrapperRef, closeModal]);
 
 	useEffect(() => {
-		let html = document.querySelector("html") as HTMLElement
+		let html = document.querySelector("html") as HTMLElement;
 
 		if (html) {
 			if (isShowing && html) {
-				html.style.overflowY = "hidden"
+				html.style.overflowY = "hidden";
 
 				const focusableElements =
-					'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+					"button, [href], input, select, textarea, [tabindex]:not([tabindex=\"-1\"])";
 
-				const modal = document.querySelector("#modal") as HTMLElement
+				const modal = document.querySelector("#modal") as HTMLElement;
 
 				const firstFocusableElement =
-					modal.querySelectorAll(focusableElements)[0] as HTMLElement
+					modal.querySelectorAll(focusableElements)[0] as HTMLElement;
 
-				const focusableContent = modal.querySelectorAll(focusableElements)
+				const focusableContent = modal.querySelectorAll(focusableElements);
 
 				const lastFocusableElement =
-					focusableContent[focusableContent.length - 1] as HTMLElement
+					focusableContent[focusableContent.length - 1] as HTMLElement;
 
 				document.addEventListener("keydown", function (e) {
 					if (e.key === "Escape") {
@@ -47,31 +47,31 @@ const ModalForm = ({children, modalTitle}: ModalPropsTypes) => {
 					let isTabPressed = e.key === "Tab" || e.DOM_KEY_LOCATION_STANDARD === 9;
 
 					if (!isTabPressed) {
-						return
+						return;
 					}
 
 					if (e.shiftKey) {
 						// if shift key pressed for shift + tab combination
 						if (document.activeElement === firstFocusableElement) {
-							lastFocusableElement.focus() // add focus for the last focusable element
-							e.preventDefault()
+							lastFocusableElement.focus(); // add focus for the last focusable element
+							e.preventDefault();
 						}
 					} else {
 						// if tab key is pressed
 						if (document.activeElement === lastFocusableElement) {
 							// if focused has reached to last focusable element then focus first focusable element after pressing tab
-							firstFocusableElement.focus() // add focus for the first focusable element
-							e.preventDefault()
+							firstFocusableElement.focus(); // add focus for the first focusable element
+							e.preventDefault();
 						}
 					}
-				})
+				});
 
-				firstFocusableElement.focus()
+				firstFocusableElement.focus();
 			} else {
-				html.style.overflowY = "visible"
+				html.style.overflowY = "visible";
 			}
 		}
-	}, [isShowing, closeModal])
+	}, [isShowing, closeModal]);
 
 	return (
 		<>
@@ -79,7 +79,7 @@ const ModalForm = ({children, modalTitle}: ModalPropsTypes) => {
 				? ReactDOM.createPortal(
 					<div className="fixed top-0 left-0 z-20 flex h-screen w-screen items-center justify-center bg-neutral/20 backdrop-blur-sm" aria-labelledby="header-modal content-modal" aria-modal="true" tabIndex={-1} role="dialog" >
 						<div ref={wrapperRef}
-						className="absolute top-5 flex max-h-[90vh] max-w-sm flex-col gap-4 overflow-hidden rounded bg-base-100 p-6 shadow-xl shadow-primary/20 border border-primary/30" id="modal">
+							className="absolute top-5 flex max-h-[90vh] max-w-sm flex-col gap-4 overflow-hidden rounded bg-base-100 p-6 shadow-xl shadow-primary/20 border border-primary/30" id="modal">
 							<header id="header-modal" className="flex items-center">
 								<h3 className="flex-1 text-lg font-medium">
 									{modalTitle}
@@ -92,7 +92,7 @@ const ModalForm = ({children, modalTitle}: ModalPropsTypes) => {
 									</span>
 								</button>
 							</header>
-							
+
 							<div id="content-modal">
 								{children}
 							</div>
@@ -101,7 +101,7 @@ const ModalForm = ({children, modalTitle}: ModalPropsTypes) => {
 					document.body
 				) : null}
 		</>
-	)
-}
+	);
+};
 
-export default ModalForm
+export default ModalForm;

@@ -1,12 +1,12 @@
-import { useContext } from 'react';
-import { TaskContext } from '../../contexts/TaskContext';
-import { Draggable } from 'react-beautiful-dnd'
-import { ITask } from '../../types/types';
+import { useContext } from "react";
+import { TaskContext } from "../../contexts/TaskContext";
+import { Draggable } from "react-beautiful-dnd";
+import { ITask } from "../../types/types";
 
 
 export default function SingleTask({...task}: ITask): JSX.Element {
-	const {toggleCompleteTask, deleteTask } = useContext(TaskContext)
-	
+	const {toggleCompleteTask, deleteTask } = useContext(TaskContext);
+
 	return (
 		<Draggable draggableId={String(task.id)} index={task.order}>
 			{(provided) => (
@@ -24,13 +24,13 @@ export default function SingleTask({...task}: ITask): JSX.Element {
 						</button>
 					</div>
 					<div className="flex justify-between items-center pl-2">
-					<input type="checkbox" className='checkbox checkbox-primary rounded-full h-6 w-6 bg-base-100 border-primary/60 checked:border-transparent checked:bg-primary checked:shadow-md checked:shadow-primary/30 peer' name="" id={"task"+task.id} checked={task.done === 1} onClick={toggleCompleteTask} readOnly />
-					<label htmlFor={"task"+(task.id)} className="py-2 px-4 w-full rounded-md cursor-pointer">
-						<p className={'text-sm break-all '+(task.done === 0 ? 'opacity-80' : ' opacity-70 line-through italic')}>{task.task}</p>
-					</label>
+						<input type="checkbox" className='checkbox checkbox-primary rounded-full h-6 w-6 bg-base-100 border-primary/60 checked:border-transparent checked:bg-primary checked:shadow-md checked:shadow-primary/30 peer' name="" id={"task"+task.id} checked={task.done === 1} onClick={toggleCompleteTask} readOnly />
+						<label htmlFor={"task"+(task.id)} className="py-2 px-4 w-full rounded-md cursor-pointer">
+							<p className={"text-sm break-all "+(task.done === 0 ? "opacity-80" : " opacity-70 line-through italic")}>{task.task}</p>
+						</label>
 					</div>
 				</li>
 			)}
 		</Draggable>
-  )
+	);
 }

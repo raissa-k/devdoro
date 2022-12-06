@@ -1,16 +1,16 @@
 import { createContext, useState } from "react";
 import { ModalContextDataTypes, ModalProviderPropsTypes } from "../types/types";
 
-export const ModalContext = createContext({} as ModalContextDataTypes)
+export const ModalContext = createContext({} as ModalContextDataTypes);
 
 export default function ModalProvider({ children }: ModalProviderPropsTypes){
-	const [isShowing, setIsShowing] = useState(false)
+	const [isShowing, setIsShowing] = useState(false);
 	function closeModal(){
-		setIsShowing(false)
+		setIsShowing(false);
 	}
 
 	function openModal(){
-		setIsShowing(true)
+		setIsShowing(true);
 	}
 
 
@@ -20,5 +20,5 @@ export default function ModalProvider({ children }: ModalProviderPropsTypes){
 		}}>
 			{children}
 		</ModalContext.Provider>
-	)
+	);
 }

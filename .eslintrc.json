@@ -1,4 +1,13 @@
 {
-  "extends": "next/core-web-vitals",
-  "rules": { "react/no-unescaped-entities": 0 }
+	"extends": "next",
+	"rules": {
+	"react/no-unescaped-entities": 0,
+	"arrow-spacing":"error",
+	"comma-dangle":"error",
+	"indent":["error", "tab"],
+	"no-mixed-spaces-and-tabs":["error", "smart-tabs"],
+	"quotes":"error",
+	"semi":[1, "always"],
+	"no-trailing-spaces":"error"
+}
 }

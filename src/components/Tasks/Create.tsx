@@ -1,18 +1,18 @@
 
-import { useContext } from 'react';
-import { TaskContext } from '../../contexts/TaskContext';
+import { useContext } from "react";
+import { TaskContext } from "../../contexts/TaskContext";
 
 export function CreateTask() {
-	const { createTask } = useContext(TaskContext)
+	const { createTask } = useContext(TaskContext);
 
-    return (
+	return (
 		<div id="content-modal">
 			<form className="form-control gap-6 py-6" onSubmit={createTask}>
 				<div className="form-control">
-				<label htmlFor="form-task" className="label">
-					<span className="label-text">What are you going to do?</span>
-				</label>
-				<input id="form-task" type="text" required name="addTask" placeholder="To do..." className="input input-primary w-full"/>
+					<label htmlFor="form-task" className="label">
+						<span className="label-text">What are you going to do?</span>
+					</label>
+					<input id="form-task" type="text" required name="addTask" placeholder="To do..." className="input input-primary w-full"/>
 				</div>
 
 				<button type='submit' aria-label="Save this task" className="btn btn-primary rounded-md gap-2 shadow shadow-primary/20" >
@@ -23,5 +23,5 @@ export function CreateTask() {
 				</button>
 			</form>
 		</div>
-		)
+	);
 };
