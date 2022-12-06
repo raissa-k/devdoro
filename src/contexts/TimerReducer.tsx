@@ -1,6 +1,15 @@
 import { Action, ActionTypes, initialStateTypes } from "../types/types"
 
 export const TimerReducer = (state: initialStateTypes, action: Action) => {
+	// destructure the `settings` and `time` properties from `state`
+	const { settings, time } = state;
+  
+	// destructure the `time` property from `settings`
+	const { time: settingsTime } = settings;
+
+	// destructure the `mode` property from `action`
+	const { mode } = action;
+
 	switch (action.type) {
 		case timerActions.setTime:
 			return {
@@ -10,8 +19,8 @@ export const TimerReducer = (state: initialStateTypes, action: Action) => {
 		case timerActions.setMode:
 			return {
 				...state,
-				mode: action.mode,
-				initialTime: state.settings.time[action.mode],
+				mode,
+				initialTime: settingsTime[mode],
 				start: false
 			}
 		case timerActions.start:
@@ -22,19 +31,19 @@ export const TimerReducer = (state: initialStateTypes, action: Action) => {
 		case timerActions.stop:
 			return {
 				...state,
-				time: state.initialTime * 60,
+				time: settingsTime[mode],
 				start: false
 			}
 		case timerActions.skip:
 			return {
 				...state,
-				time: state.initialTime * 60,
+				time: settingsTime[mode],
 				start: true
 			}
 		case timerActions.tickdown:
 			return {
 				...state,
-				time: state.time > 0 ? state.time - 1 : 0
+				time: time > 0 ? time - 1 : 0
 			}
 	}
 }

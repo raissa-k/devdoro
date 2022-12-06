@@ -1,4 +1,4 @@
-import { createContext, ReactNode, useState } from "react";
+import { createContext, useState } from "react";
 import { ModalContextDataTypes, ModalProviderPropsTypes } from "../types/types";
 
 export const ModalContext = createContext({} as ModalContextDataTypes)

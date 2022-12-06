@@ -4,7 +4,7 @@ import { Draggable } from 'react-beautiful-dnd'
 import { ITask } from '../../types/types';
 
 
-export default function SingleTask({...task}: ITask) {
+export default function SingleTask({...task}: ITask): JSX.Element {
 	const {toggleCompleteTask, deleteTask } = useContext(TaskContext)
 	
 	return (
